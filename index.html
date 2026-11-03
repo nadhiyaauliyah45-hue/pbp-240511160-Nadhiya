@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PBP Assignment Collection</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap bar">
+      <a class="brand" href="#">
+        <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13C17 4 14 4.5 12 6z"/><path d="M12 6v13"/></svg></span>
+        <span class="brand-text"><strong id="siteTitle">PBP Assignment Collection</strong><small>Pemrograman Berbasis Platform</small></span>
+      </a>
+      <nav class="menu" aria-label="Menu utama">
+        <a href="#">Beranda</a>
+        <a href="#praktikum">Praktikum</a>
+        <a href="#laporan">Laporan PDF</a>
+        <button class="btn sm" id="btnEditProfile" type="button">Edit Profil</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div id="viewHome">
+      <section class="hero" id="profil" aria-label="Profil mahasiswa"></section>
+
+      <section id="praktikum" class="block">
+        <div class="head">
+          <div><p class="eyebrow">Portfolio</p><h2>My Practical Works</h2></div>
+          <button class="btn ghost sm" id="btnAddWork" type="button">+ Tambah Praktikum</button>
+        </div>
+        <div class="works" id="works"></div>
+      </section>
+
+      <section id="laporan" class="block">
+        <p class="eyebrow">Dokumen</p>
+        <h2>Assignment Reports</h2>
+        <div class="report">
+          <div class="pdf" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg><b>PDF</b></div>
+          <div class="report-text">
+            <h3>Laporan Tugas Praktikum</h3>
+            <p>Seluruh laporan tugas tersedia dalam format PDF dan tersimpan di folder Google Drive.</p>
+          </div>
+          <a class="btn" id="btnDrive" href="#" target="_blank" rel="noopener noreferrer">Buka Folder Google Drive</a>
+        </div>
+      </section>
+    </div>
+
+    <div id="viewDetail" hidden></div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap foot">
+      <strong>PBP Assignment Collection</strong>
+      <span id="footName"></span>
+      <span id="footUniv"></span>
+      <span id="footYear"></span>
+    </div>
+  </footer>
+
+  <dialog id="dlgProfile">
+    <form id="formProfile" novalidate>
+      <h3>Edit Profil &amp; Pengaturan</h3>
+      <div class="photo-edit">
+        <div class="avatar sm" id="photoPreview"></div>
+        <label class="btn ghost sm">Ganti Foto<input type="file" id="fPhoto" accept="image/*" hidden></label>
+      </div>
+      <div class="grid2">
+        <label>Nama<input id="fNama" required></label>
+        <label>NIM<input id="fNim" required></label>
+        <label>Program Studi<input id="fProdi" required></label>
+        <label>Kelas<input id="fKelas" required></label>
+      </div>
+      <label>Universitas<input id="fUniv" required></label>
+      <label>Deskripsi<textarea id="fDesk" rows="3"></textarea></label>
+      <hr>
+      <label>Judul Website<input id="fSite" required></label>
+      <label>Link Folder Google Drive<input id="fDrive" type="url" placeholder="https://drive.google.com/drive/folders/14ZEuOfxmCde2Ig2tZ46CC3XpA6bx93Oj?usp=drive_link"></label>
+      <p class="err" id="errProfile" role="alert"></p>
+      <div class="actions">
+        <button type="button" class="btn ghost" data-close="dlgProfile">Batal</button>
+        <button type="submit" class="btn">Simpan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dlgWork">
+    <form id="formWork" novalidate>
+      <h3 id="workDlgTitle">Tambah Praktikum</h3>
+      <div class="grid2">
+        <label>Nomor Pertemuan<input id="wNum" type="number" min="1" max="99" required></label>
+        <label>Status
+          <select id="wStatus"><option value="available">Tersedia</option><option value="soon">Belum tersedia</option></select>
+        </label>
+      </div>
+      <label>Judul Praktikum<input id="wTitle" required></label>
+      <label>Deskripsi<textarea id="wDesc" rows="3"></textarea></label>
+      <label>Lokasi File Hasil (mis. praktikum/pertemuan-4/index.html)<input id="wPath"></label>
+      <p class="err" id="errWork" role="alert"></p>
+      <div class="actions">
+        <button type="button" class="btn ghost" data-close="dlgWork">Batal</button>
+        <button type="submit" class="btn">Simpan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
