@@ -17,7 +17,7 @@ Website portofolio pribadi untuk mengumpulkan tugas praktikum, menampilkan hasil
 
 ---
 
-## 👤 Identitas
+## 👤 Identita
 
 | | |
 |---|---|
