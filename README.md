@@ -11,7 +11,7 @@ Website portofolio pribadi untuk mengumpulkan tugas praktikum, menampilkan hasil
 ![JavaScript](https://img.shields.io/badge/JavaScript_ES6-76563F?style=flat-square&logo=javascript&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/Hosted_on-GitHub_Pages-493629?style=flat-square&logo=github&logoColor=white)
 
-🔗 **Demo:** `https://nadhiyaauliyah45-hue.github.io/NAMA-REPOSITORY/` *(ganti `NAMA-REPOSITORY` sesuai nama repository ini)*
+🔗 **Demo:** `https://nadhiyaauliyah45-hue.github.io/pbp-240511160-Nadhiya/`
 
 </div>
 
