@@ -12,32 +12,7 @@
 }
 
 /* ===== Reset & dasar ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 88px;
-}
-
-body {
-  font-family: 'Segoe UI', system-ui, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--dark);
-  line-height: 1.6;
-}
-
-h1, h2, h3, .serif {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-weight: 700;
-}
-
-a {
-  color: inherit;
-}
 
 .wrap {
   max-width: 1080px;
