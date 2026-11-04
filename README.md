@@ -11,7 +11,7 @@ Website portofolio pribadi untuk mengumpulkan tugas praktikum, menampilkan hasil
 ![JavaScript](https://img.shields.io/badge/JavaScript_ES6-76563F?style=flat-square&logo=javascript&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/Hosted_on-GitHub_Pages-493629?style=flat-square&logo=github&logoColor=white)
 
-🔗 **Demo:** `https://nadhiyaauliyah45-hue.github.io/pbp-240511160-Nadhiya/` 
+🔗 **Demo:** `https://nadhiyaauliyah45-hue.github.io/NAMA-REPOSITORY/` *(ganti `NAMA-REPOSITORY` sesuai nama repository ini)*
 
 </div>
 
@@ -71,7 +71,8 @@ pbp-assignment/
 └── praktikum/
     ├── pertemuan-1/   # Hello World 3 platform + analisis platform
     ├── pertemuan-2/   # Halaman profil HTML5 & CSS
-    └── pertemuan-3/   # Halaman profil responsif (media queries)
+    ├── pertemuan-3/   # Halaman profil responsif (media queries)
+    └── pertemuan-4/   # To-Do List (JavaScript, DOM, localStorage)
 ```
 
 ## 🚀 Cara Menjalankan
@@ -110,7 +111,8 @@ pbp-assignment/
 | 1 | Setup Environment & Eksplorasi Platform | ✅ Tersedia |
 | 2 | HTML5 & CSS Dasar: Halaman Profil | ✅ Tersedia |
 | 3 | Responsive Design: Halaman Profil Responsif | ✅ Tersedia |
-| 4–16 | Menyusul | ⏳ Belum tersedia |
+| 4 | JavaScript Fundamentals & DOM: To-Do List | ✅ Tersedia |
+| 5–16 | Menyusul | ⏳ Belum tersedia |
 
 ## 📝 Catatan
 
