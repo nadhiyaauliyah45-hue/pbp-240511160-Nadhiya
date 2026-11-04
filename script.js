@@ -1,6 +1,5 @@
-/* ====== KONFIGURASI ======
-   Tempel link folder Google Drive Anda di driveUrl (di antara tanda kutip).
-   Folder harus dibagikan: Anyone with the link -> Viewer. */
+/* ====== KONFIGURASI ====== */
+
 const CONFIG = Object.freeze({
   driveUrl: "https://drive.google.com/drive/folders/14ZEuOfxmCde2Ig2tZ46CC3XpA6bx93Oj?usp=drive_link",
   siteTitle: "PBP Assignment Collection",
