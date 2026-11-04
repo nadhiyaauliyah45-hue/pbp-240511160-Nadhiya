@@ -1,20 +1,20 @@
 /* ===== Tema: Warm Brown, Dark Brown, Beige & Cream ===== */
 :root {
-    --cream: #FBF3EA;
-    --cream-2: #F6E9DB;
-    --beige: #E8D3BC;
-    --soft: #C8A27E;
-    --coffee: #8A5A3B;
-    --dark: #6B4A35;       /* tombol Tambah */
-    --darker: #55392A;     /* tombol Hapus (sedikit lebih gelap) */
-    --text: #4A3224;
-    --white: #FFFBF6;
+    --cream: #FFF6EC;
+    --cream-2: #F8E7D3;
+    --beige: #EBD2B6;
+    --soft: #D2A67C;       /* karamel */
+    --coffee: #A8693F;     /* cokelat hangat */
+    --dark: #7A4A2B;       /* tombol Tambah */
+    --darker: #5E3620;     /* tombol Hapus (sedikit lebih gelap) */
+    --text: #4A2C1A;
+    --white: #FFFCF8;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Nunito', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    font-family: 'Quicksand', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
     color: var(--text);
     background: linear-gradient(180deg, var(--cream), var(--cream-2));
     min-height: 100vh;
@@ -36,6 +36,12 @@ body {
     transform-origin: 50% 100%;
     animation: bergoyang 5s ease-in-out infinite;
 }
+
+.bulat { position: fixed; z-index: 0; border-radius: 50%; pointer-events: none; }
+.c1 { width: 240px; height: 240px; left: -80px; top: 34%; background: var(--beige); opacity: .6; animation: melayang 9s ease-in-out infinite; }
+.c2 { width: 170px; height: 170px; right: 5%; top: 50%; border: 2px solid var(--soft); opacity: .55; animation: melayang 11s ease-in-out infinite -4s; }
+.c3 { width: 20px; height: 20px; left: 14%; top: 26%; background: var(--soft); opacity: .7; animation: berkilau 4s ease-in-out infinite; }
+.c4 { width: 34px; height: 34px; right: 16%; top: 30%; border: 2px solid var(--coffee); opacity: .5; animation: berkilau 5s ease-in-out infinite -2s; }
 
 /* ===== Konten ===== */
 .app {
@@ -59,14 +65,15 @@ body {
 .teks-judul { text-align: center; }
 
 h1 {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Fraunces', Georgia, serif;
     font-weight: 800;
+    letter-spacing: -.5px;
     font-size: clamp(2.2rem, 7vw, 3.4rem);
     line-height: 1.1;
     color: var(--darker);
 }
 .garis-judul { width: min(280px, 70%); display: block; margin: 2px auto 6px; }
-.sub { font-style: italic; font-weight: 600; color: var(--coffee); }
+.sub { font-weight: 600; letter-spacing: .2px; color: var(--coffee); }
 
 .kilau { position: absolute; width: 26px; animation: berkilau 2.6s ease-in-out infinite; }
 .k1 { top: -6px; right: 6%; }
@@ -85,11 +92,11 @@ form { display: flex; gap: 14px; }
     background: var(--white);
     border: 2px solid var(--coffee);
     border-radius: 999px;
-    box-shadow: 0 4px 14px rgba(107, 74, 53, .08);
+    box-shadow: 0 4px 14px rgba(122, 74, 43, .08);
     transition: box-shadow .25s, transform .25s;
 }
 .kolom-input:focus-within {
-    box-shadow: 0 0 0 5px rgba(200, 162, 126, .35);
+    box-shadow: 0 0 0 5px rgba(210, 166, 124, .35);
     transform: translateY(-1px);
 }
 .kolom-input svg { width: 24px; flex: none; }
@@ -125,7 +132,7 @@ button:active { transform: scale(.94); }
     padding: 0 30px;
     font-size: 1.1rem;
     background: var(--dark);
-    box-shadow: 0 6px 16px rgba(107, 74, 53, .35);
+    box-shadow: 0 6px 16px rgba(122, 74, 43, .35);
 }
 .tambah svg { width: 20px; }
 .tambah:hover { background: var(--darker); transform: translateY(-2px); }
@@ -172,10 +179,11 @@ li {
     padding: 14px 16px 14px 24px;
     background: var(--white);
     border-radius: 999px;
-    box-shadow: 0 6px 18px rgba(107, 74, 53, .10);
+    border: 1px solid rgba(210, 166, 124, .35);
+    box-shadow: 0 6px 18px rgba(122, 74, 43, .10);
     transition: transform .25s, box-shadow .25s;
 }
-li:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(107, 74, 53, .16); }
+li:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(122, 74, 43, .16); }
 
 li.baru   { animation: masuk .45s cubic-bezier(.2, .8, .2, 1); }
 li.keluar { animation: keluar .3s ease forwards; }
@@ -219,7 +227,7 @@ li span.teks {
     background: linear-gradient(currentColor, currentColor) no-repeat 0 55% / 0% 2px;
     transition: background-size .35s ease, color .3s;
 }
-li.selesai span.teks { background-size: 100% 2px; color: #A58870; }
+li.selesai span.teks { background-size: 100% 2px; color: #B79A82; }
 
 .hapus {
     flex: none;
@@ -228,7 +236,7 @@ li.selesai span.teks { background-size: 100% 2px; color: #A58870; }
     background: var(--darker);
 }
 .hapus svg { width: 20px; }
-.hapus:hover { background: #3F2A1E; transform: translateY(-2px); box-shadow: 0 6px 14px rgba(85, 57, 42, .35); }
+.hapus:hover { background: #45260F; transform: translateY(-2px); box-shadow: 0 6px 14px rgba(94, 54, 32, .35); }
 
 #selamat {
     margin-top: 20px;
