@@ -1,9 +1,11 @@
-/* ====== KONFIGURASI ====== */
-
+/* ====== KONFIGURASI ======
+   Tempel link folder Google Drive Anda di driveUrl (di antara tanda kutip).
+   Folder harus dibagikan: Anyone with the link -> Viewer. */
 const CONFIG = Object.freeze({
   driveUrl: "https://drive.google.com/drive/folders/14ZEuOfxmCde2Ig2tZ46CC3XpA6bx93Oj?usp=drive_link",
   siteTitle: "PBP Assignment Collection",
-  tagline: "My Practice, My Progress, My Portfolio."
+  tagline: "My Practice, My Progress, My Portfolio.",
+  photo: "assets/images/profile.jpg" // foto profil tetap: letakkan file di folder ini
 });
 const KEY = { profile: "pbp_profile_v1", works: "pbp_works_v2", settings: "pbp_settings_v1" };
 
@@ -33,9 +35,10 @@ const defaultWorks = () => TITLES.map((t, i) => {
 });
 
 let profile = { ...DEFAULT_PROFILE, ...load(KEY.profile, {}) };
+profile.photo = CONFIG.photo; // foto selalu dari CONFIG (sama di semua perangkat)
 let settings = { siteTitle: CONFIG.siteTitle, ...load(KEY.settings, {}) };
 let works = load(KEY.works, null) || defaultWorks();
-let newPhoto = null, editingNum = null;
+let editingNum = null;
 
 function toast(msg) { const t = $("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove("show"), 2600); }
 const initials = (n) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join("");
@@ -88,7 +91,7 @@ function renderDetail(n) {
       <button class="btn danger sm" type="button" data-del-work="${w.num}">Hapus Data</button>
     </div>
     <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span>${esc(w.path || "belum ada file hasil")}</span></div>
-      ${on ? `<iframe title="Hasil Pertemuan ${w.num}" src="${esc(w.path)}" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-forms" loading="lazy"></iframe>`
+      ${on ? `<iframe title="Hasil Pertemuan ${w.num}" src="${esc(w.path)}" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms" loading="lazy"></iframe>`
            : `<div class="empty"><h3>Hasil belum tersedia</h3><p>Isi lokasi file hasil dan ubah status menjadi Tersedia lewat Edit Informasi.</p></div>`}
     </div>
     <div class="pager">${prev ? `<a class="btn ghost sm" href="#p${prev.num}">← Pertemuan ${prev.num}</a>` : "<span></span>"}${next ? `<a class="btn ghost sm" href="#p${next.num}">Pertemuan ${next.num} →</a>` : "<span></span>"}</div>
@@ -109,32 +112,14 @@ function openProfile() {
   $("fNama").value = profile.nama; $("fNim").value = profile.nim; $("fProdi").value = profile.prodi;
   $("fKelas").value = profile.kelas; $("fUniv").value = profile.univ; $("fDesk").value = profile.deskripsi;
   $("fSite").value = settings.siteTitle;
-  newPhoto = null; $("fPhoto").value = ""; $("errProfile").textContent = "";
-  $("photoPreview").outerHTML = avatar(profile, "sm", "photoPreview");
+  $("errProfile").textContent = "";
   $("dlgProfile").showModal();
 }
-$("fPhoto").addEventListener("change", (e) => {
-  const f = e.target.files[0]; if (!f) return;
-  if (!f.type.startsWith("image/")) { $("errProfile").textContent = "File harus berupa gambar."; return; }
-  const r = new FileReader();
-  r.onload = () => {
-    const img = new Image();
-    img.onload = () => {
-      const s = Math.min(1, 480 / Math.max(img.width, img.height)), c = document.createElement("canvas");
-      c.width = img.width * s; c.height = img.height * s; c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
-      newPhoto = c.toDataURL("image/jpeg", 0.85); $("errProfile").textContent = "";
-      $("photoPreview").innerHTML = `<img src="${newPhoto}" alt="Preview foto">`;
-    };
-    img.onerror = () => { $("errProfile").textContent = "Gambar tidak dapat dibaca."; };
-    img.src = r.result;
-  };
-  r.readAsDataURL(f);
-});
 $("formProfile").addEventListener("submit", (e) => {
   e.preventDefault();
   const vals = ["fNama", "fNim", "fProdi", "fKelas", "fUniv", "fSite"].map((id) => $(id).value.trim());
   if (vals.some((v) => !v)) { $("errProfile").textContent = "Nama, NIM, prodi, kelas, universitas, dan judul website wajib diisi."; return; }
-  profile = { ...profile, nama: vals[0], nim: vals[1], prodi: vals[2], kelas: vals[3], univ: vals[4], deskripsi: $("fDesk").value.trim(), photo: newPhoto || profile.photo };
+  profile = { ...profile, nama: vals[0], nim: vals[1], prodi: vals[2], kelas: vals[3], univ: vals[4], deskripsi: $("fDesk").value.trim(), photo: CONFIG.photo };
   settings = { siteTitle: vals[5] };
   if (save(KEY.profile, profile) && save(KEY.settings, settings)) { $("dlgProfile").close(); renderAll(); toast("Profil berhasil disimpan"); }
 });

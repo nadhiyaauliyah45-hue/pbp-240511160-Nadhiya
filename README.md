@@ -11,7 +11,7 @@ Website portofolio pribadi untuk mengumpulkan tugas praktikum, menampilkan hasil
 ![JavaScript](https://img.shields.io/badge/JavaScript_ES6-76563F?style=flat-square&logo=javascript&logoColor=white)
 ![GitHub Pages](https://img.shields.io/badge/Hosted_on-GitHub_Pages-493629?style=flat-square&logo=github&logoColor=white)
 
-🔗 **Demo:** `https://nadhiyaauliyah45-hue.github.io/pbp-240511160-Nadhiya/`
+🔗 **Demo:** `https://nadhiyaauliyah45-hue.github.io/NAMA-REPOSITORY/` *(ganti `NAMA-REPOSITORY` sesuai nama repository ini)*
 
 </div>
 
@@ -94,8 +94,8 @@ pbp-assignment/
 
 | Yang ingin diubah | Cara |
 |---|---|
-| Link Google Drive laporan | Ubah `CONFIG.driveUrl` di `script.js`, atau lewat tombol **Edit Profil** |
-| Foto profil | Letakkan `profile.jpg` di `assets/images/`, atau upload lewat **Edit Profil** |
+| Link Google Drive laporan | Ubah `CONFIG.driveUrl` di `script.js` (berlaku di semua perangkat) |
+| Foto profil | Ganti file `assets/images/profile.jpg` (nama harus persis sama) |
 | Judul website | Lewat **Edit Profil** |
 
 ## ➕ Menambah Praktikum Baru
