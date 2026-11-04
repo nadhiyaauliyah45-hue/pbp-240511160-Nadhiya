@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+
+  <div class="app">
+    <h1><span class="ikon">📝</span> To-Do List</h1>
+    <p class="sub">Catat, selesaikan, dan rayakan setiap langkah kecil.</p>
+    <form id="form-todo">
+      <input type="text" id="input-todo" placeholder="Tulis tugas baru..." required>
+      <button type="submit">Tambah</button>
+    </form>
+    <p id="stats">0 tugas belum selesai</p>
+    <div class="progress" aria-hidden="true"><div id="bar"></div></div>
+    <ul id="list-todo"></ul>
+    <p id="selamat" hidden>🎉 Semua tugas selesai! Kerja bagus.</p>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

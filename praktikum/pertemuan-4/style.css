@@ -1,0 +1,205 @@
+/* Tema: Warm Neutral - Coffee Brown, Cream & Beige */
+:root {
+    --bg: #F7F3EB;
+    --cream: #F1E8D8;
+    --beige: #E5D5BE;
+    --soft: #C8AE91;
+    --coffee: #76563F;
+    --dark: #493629;
+    --white: #FFFCF7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    /* Nunito (Google Fonts); cadangan: keluarga font Lucida */
+    font-family: 'Nunito', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    padding: 20px;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ===== Dekorasi latar yang melayang pelan ===== */
+.blob {
+    position: fixed;
+    border-radius: 50%;
+    z-index: 0;
+    animation: melayang 12s ease-in-out infinite;
+}
+.b1 { width: 260px; height: 260px; background: var(--beige); opacity: .6; top: -80px; right: -60px; }
+.b2 { width: 190px; height: 190px; border: 2px solid var(--soft); opacity: .5; bottom: -50px; left: -40px; animation-delay: -5s; }
+
+@keyframes melayang {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(26px) scale(1.06); }
+}
+
+/* ===== Kartu utama ===== */
+.app {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 24px auto;
+    background: var(--white);
+    padding: 28px;
+    border-radius: 24px;
+    border: 1px solid var(--beige);
+    box-shadow: 0 14px 36px rgba(73, 54, 41, 0.14);
+    animation: muncul .7s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+@keyframes muncul {
+    from { opacity: 0; transform: translateY(24px) scale(.98); }
+    to   { opacity: 1; transform: none; }
+}
+
+h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--coffee);
+    text-align: center;
+}
+
+.ikon {
+    display: inline-block;
+    transform-origin: 70% 90%;
+    animation: goyang 3.5s ease-in-out infinite;
+}
+
+@keyframes goyang {
+    0%, 60%, 100% { transform: rotate(0); }
+    70% { transform: rotate(-14deg); }
+    80% { transform: rotate(10deg); }
+    90% { transform: rotate(-6deg); }
+}
+
+.sub { text-align: center; color: var(--coffee); font-size: .92rem; margin: 4px 0 18px; }
+
+/* ===== Form ===== */
+form { display: flex; gap: 8px; margin-bottom: 14px; }
+
+input[type="text"] {
+    flex: 1;
+    min-width: 0;
+    padding: 11px 16px;
+    border: 1.5px solid var(--beige);
+    border-radius: 999px;
+    font: inherit;
+    background: var(--bg);
+    color: var(--dark);
+    transition: border-color .25s, box-shadow .25s;
+}
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--coffee);
+    box-shadow: 0 0 0 4px rgba(200, 174, 145, .35);
+}
+
+button {
+    padding: 10px 20px;
+    background: var(--coffee);
+    color: var(--white);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    transition: background .2s, transform .15s, box-shadow .2s;
+}
+button:hover { background: var(--dark); transform: translateY(-2px); box-shadow: 0 6px 14px rgba(73, 54, 41, .25); }
+button:active { transform: scale(.94); }
+
+/* ===== Statistik & progress ===== */
+#stats { color: var(--coffee); font-size: .9rem; font-weight: 600; margin-bottom: 8px; }
+
+.progress { height: 8px; background: var(--cream); border-radius: 999px; overflow: hidden; margin-bottom: 12px; }
+#bar {
+    height: 100%;
+    width: 0;
+    background: var(--coffee);
+    border-radius: 999px;
+    transition: width .6s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* ===== Daftar tugas ===== */
+ul { list-style: none; }
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-bottom: 1px solid var(--cream);
+    border-radius: 10px;
+    transition: background .2s, transform .2s;
+}
+li:hover { background: var(--bg); transform: translateX(4px); }
+
+li.baru   { animation: masuk .45s cubic-bezier(.2, .8, .2, 1); }
+li.keluar { animation: keluar .3s ease forwards; }
+li.kosong { justify-content: center; color: var(--soft); }
+li.kosong:hover { background: none; transform: none; }
+
+@keyframes masuk  { from { opacity: 0; transform: translateX(-26px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes keluar { to   { opacity: 0; transform: translateX(44px) scale(.9); } }
+
+/* Checkbox bulat dengan tanda centang beranimasi */
+li input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    flex: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--soft);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background .25s, border-color .25s, transform .25s;
+}
+li input[type="checkbox"]::after {
+    content: "";
+    width: 6px;
+    height: 11px;
+    margin-top: -2px;
+    border: solid var(--white);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0);
+    transition: transform .25s cubic-bezier(.3, 1.6, .5, 1);
+}
+li input[type="checkbox"]:checked { background: var(--coffee); border-color: var(--coffee); transform: scale(1.1); }
+li input[type="checkbox"]:checked::after { transform: rotate(45deg) scale(1); }
+
+/* Teks tugas: garis coret muncul dengan animasi saat selesai */
+li span.teks {
+    flex: 1;
+    overflow-wrap: anywhere;
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 55% / 0% 2px;
+    transition: background-size .35s ease, color .3s;
+}
+li.selesai span.teks { background-size: 100% 2px; color: var(--soft); }
+
+li .hapus { background: #8A3B2E; padding: 6px 14px; font-size: .85rem; }
+li .hapus:hover { background: #6e2e24; }
+
+/* ===== Pesan semua selesai ===== */
+#selamat {
+    text-align: center;
+    margin-top: 14px;
+    color: var(--coffee);
+    font-weight: 700;
+    animation: pop .5s cubic-bezier(.3, 1.6, .5, 1);
+}
+@keyframes pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
+
+@media (max-width: 480px) {
+    body { padding: 12px; }
+    .app { padding: 20px; margin-top: 12px; }
+}
+
+/* Hormati pengguna yang mengurangi animasi */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}
