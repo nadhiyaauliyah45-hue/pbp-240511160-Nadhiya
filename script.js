@@ -1,6 +1,6 @@
 /* ====== KONFIGURASI (ubah link Google Drive di sini) ====== */
 const CONFIG = {
-  driveUrl: "https://drive.google.com/drive/",
+ driveUrl: "https://drive.google.com/drive/folders/14ZEuOfxmCde2Ig2tZ46CC3XpA6bx93Oj?usp=drive_link",
   siteTitle: "PBP Assignment Collection",
   tagline: "My Practice, My Progress, My Portfolio."
 };
