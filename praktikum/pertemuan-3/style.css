@@ -200,3 +200,6 @@ footer {
   .foto { width: 80px; height: 80px; }
   section { padding: 20px; }
 }
+
+/* Kontak: teks panjang tidak keluar layar */
+.contact li { overflow-wrap: anywhere; }
