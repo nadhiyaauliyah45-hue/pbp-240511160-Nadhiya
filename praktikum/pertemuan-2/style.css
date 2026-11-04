@@ -72,6 +72,7 @@ nav a {
 }
 
 nav a:hover,
+nav a.active { background: var(--coffee); color: var(--white-warm); }
 nav a:focus-visible { background: var(--coffee); color: var(--white-warm); }
 
 a:focus-visible { outline: 3px solid var(--light-brown); outline-offset: 2px; }
