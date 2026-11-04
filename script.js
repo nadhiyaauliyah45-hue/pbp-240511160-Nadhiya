@@ -1,9 +1,11 @@
-/* ====== KONFIGURASI (ubah link Google Drive di sini) ====== */
-const CONFIG = {
- driveUrl: "https://drive.google.com/drive/folders/14ZEuOfxmCde2Ig2tZ46CC3XpA6bx93Oj?usp=drive_link",
+/* ====== KONFIGURASI ======
+   Tempel link folder Google Drive Anda di driveUrl (di antara tanda kutip).
+   Folder harus dibagikan: Anyone with the link -> Viewer. */
+const CONFIG = Object.freeze({
+  driveUrl: "https://drive.google.com/drive/folders/14ZEuOfxmCde2Ig2tZ46CC3XpA6bx93Oj?usp=drive_link",
   siteTitle: "PBP Assignment Collection",
   tagline: "My Practice, My Progress, My Portfolio."
-};
+});
 const KEY = { profile: "pbp_profile_v1", works: "pbp_works_v2", settings: "pbp_settings_v1" };
 
 const DEFAULT_PROFILE = {
@@ -32,7 +34,7 @@ const defaultWorks = () => TITLES.map((t, i) => {
 });
 
 let profile = { ...DEFAULT_PROFILE, ...load(KEY.profile, {}) };
-let settings = { driveUrl: CONFIG.driveUrl, siteTitle: CONFIG.siteTitle, ...load(KEY.settings, {}) };
+let settings = { siteTitle: CONFIG.siteTitle, ...load(KEY.settings, {}) };
 let works = load(KEY.works, null) || defaultWorks();
 let newPhoto = null, editingNum = null;
 
@@ -65,7 +67,7 @@ function renderAll() {
       <div class="foot"><span class="pill">${on ? "Tersedia" : "Belum tersedia"}</span>
       <a class="btn sm" href="#p${w.num}">Lihat Hasil</a></div></article>`;
   }).join("");
-  $("btnDrive").href = settings.driveUrl;
+  $("btnDrive").href = CONFIG.driveUrl; // link Drive tetap, tidak bisa diubah dari website
   $("footName").textContent = profile.nama;
   $("footUniv").textContent = profile.univ;
   $("footYear").textContent = "© " + new Date().getFullYear();
@@ -107,7 +109,7 @@ window.addEventListener("hashchange", route);
 function openProfile() {
   $("fNama").value = profile.nama; $("fNim").value = profile.nim; $("fProdi").value = profile.prodi;
   $("fKelas").value = profile.kelas; $("fUniv").value = profile.univ; $("fDesk").value = profile.deskripsi;
-  $("fSite").value = settings.siteTitle; $("fDrive").value = settings.driveUrl;
+  $("fSite").value = settings.siteTitle;
   newPhoto = null; $("fPhoto").value = ""; $("errProfile").textContent = "";
   $("photoPreview").outerHTML = avatar(profile, "sm", "photoPreview");
   $("dlgProfile").showModal();
@@ -133,10 +135,8 @@ $("formProfile").addEventListener("submit", (e) => {
   e.preventDefault();
   const vals = ["fNama", "fNim", "fProdi", "fKelas", "fUniv", "fSite"].map((id) => $(id).value.trim());
   if (vals.some((v) => !v)) { $("errProfile").textContent = "Nama, NIM, prodi, kelas, universitas, dan judul website wajib diisi."; return; }
-  const drive = $("fDrive").value.trim();
-  if (drive) { try { const u = new URL(drive); if (!/^https?:$/.test(u.protocol)) throw 0; } catch { $("errProfile").textContent = "Link Google Drive tidak valid."; return; } }
   profile = { ...profile, nama: vals[0], nim: vals[1], prodi: vals[2], kelas: vals[3], univ: vals[4], deskripsi: $("fDesk").value.trim(), photo: newPhoto || profile.photo };
-  settings = { siteTitle: vals[5], driveUrl: drive || CONFIG.driveUrl };
+  settings = { siteTitle: vals[5] };
   if (save(KEY.profile, profile) && save(KEY.settings, settings)) { $("dlgProfile").close(); renderAll(); toast("Profil berhasil disimpan"); }
 });
 
@@ -180,7 +180,7 @@ document.addEventListener("click", (e) => {
 });
 $("btnEditProfile").addEventListener("click", openProfile);
 $("btnAddWork").addEventListener("click", () => openWork());
-$("btnDrive").addEventListener("click", (e) => { if (/GANTI_DENGAN/.test(settings.driveUrl)) { e.preventDefault(); toast("Atur link Drive lewat Edit Profil atau CONFIG di script.js"); } });
+$("btnDrive").addEventListener("click", (e) => { if (/GANTI_DENGAN/.test(CONFIG.driveUrl)) { e.preventDefault(); toast("Isi link Drive pada CONFIG.driveUrl di script.js (baris 3)"); } });
 ["dlgProfile", "dlgWork"].forEach((id) => $(id).addEventListener("click", (e) => { if (e.target.id === id) e.target.close(); }));
 
 renderAll(); route();
