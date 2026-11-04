@@ -3,85 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Fraunces:opsz,wght@9..144,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <title>PBP Assignment Collection</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Dekorasi latar: lingkaran -->
-  <span class="bulat c1" aria-hidden="true"></span>
-  <span class="bulat c2" aria-hidden="true"></span>
-  <span class="bulat c3" aria-hidden="true"></span>
-  <span class="bulat c4" aria-hidden="true"></span>
+  <header class="topbar">
+    <div class="wrap bar">
+      <a class="brand" href="#">
+        <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6c-2-1.5-5-2-8-1.5v13c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-13C17 4 14 4.5 12 6z"/><path d="M12 6v13"/></svg></span>
+        <span class="brand-text"><strong id="siteTitle">PBP Assignment Collection</strong><small>Pemrograman Berbasis Platform</small></span>
+      </a>
+      <nav class="menu" aria-label="Menu utama">
+        <a href="#">Beranda</a>
+        <a href="#praktikum">Praktikum</a>
+        <a href="#laporan">Laporan PDF</a>
+        <button class="btn sm" id="btnEditProfile" type="button">Edit Profil</button>
+      </nav>
+    </div>
+  </header>
 
-  <!-- Dekorasi latar: gelombang coklat -->
-  <svg class="wave w-tl" viewBox="0 0 260 180" aria-hidden="true"><path d="M0 0H210C160 40 130 30 95 82C60 134 22 120 0 172Z" fill="#D2A67C"/></svg>
-  <svg class="wave w-tr" viewBox="0 0 320 140" aria-hidden="true"><path d="M320 0V118C262 108 250 52 192 46C142 40 112 14 92 0Z" fill="#8B5330"/><path d="M320 96C270 92 256 40 200 34" fill="none" stroke="#D2A67C" stroke-width="2"/></svg>
-  <svg class="wave w-bottom" viewBox="0 0 1200 160" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70C200 20 400 110 600 60C800 10 1000 80 1200 40V160H0Z" fill="#E7C9A6"/><path d="M0 112C250 72 450 142 700 102C900 72 1050 122 1200 92V160H0Z" fill="#7A4A2B"/></svg>
+  <main class="wrap">
+    <div id="viewHome">
+      <section class="hero" id="profil" aria-label="Profil mahasiswa"></section>
 
-  <!-- Tanaman -->
-  <svg class="plant" viewBox="0 0 100 120" aria-hidden="true">
-    <g fill="#8C8B5C" stroke="#7A4A2B" stroke-width="2.5" stroke-linejoin="round">
-      <ellipse cx="36" cy="40" rx="13" ry="26" transform="rotate(-28 36 40)"/>
-      <ellipse cx="64" cy="44" rx="12" ry="24" transform="rotate(30 64 44)"/>
-      <ellipse cx="50" cy="28" rx="11" ry="24"/>
-    </g>
-    <path d="M50 76V40M44 74L36 48M56 74L64 52" stroke="#7A4A2B" stroke-width="2" fill="none"/>
-    <path d="M20 76h60l-6 36H26z" fill="#FFF0DD" stroke="#7A4A2B" stroke-width="2.5" stroke-linejoin="round"/>
-    <path d="M50 100s-12-7-12-14a6 6 0 0112-3 6 6 0 0112 3c0 7-12 14-12 14z" fill="#B07A55"/>
-  </svg>
+      <section id="praktikum" class="block">
+        <div class="head">
+          <div><p class="eyebrow">Portfolio</p><h2>My Practical Works</h2></div>
+          <button class="btn ghost sm" id="btnAddWork" type="button">+ Tambah Praktikum</button>
+        </div>
+        <div class="works" id="works"></div>
+      </section>
 
-  <main class="app">
-    <header class="judul">
-      <svg class="logo" viewBox="0 0 120 120" aria-hidden="true">
-        <g stroke="#7A4A2B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-          <g transform="rotate(-8 45 61)">
-            <rect x="14" y="20" width="62" height="82" rx="10" fill="#FFF4E8"/>
-            <rect x="32" y="10" width="26" height="14" rx="5" fill="#7A4A2B"/>
-            <path d="M28 44l4 4 7-8M46 42h22M28 62l4 4 7-8M46 60h22M28 80l4 4 7-8M46 78h14" fill="none" stroke-width="4"/>
-          </g>
-          <circle cx="80" cy="82" r="24" fill="#FFF4E8"/>
-          <path d="M80 68v14l8 5M75 56h10" fill="none"/>
-        </g>
-      </svg>
-      <div class="teks-judul">
-        <h1>To-Do List</h1>
-        <svg class="garis-judul" viewBox="0 0 300 12" aria-hidden="true"><path d="M2 8c40-8 80 4 120-2s90-6 176 0" fill="none" stroke="#A8693F" stroke-width="3" stroke-linecap="round"/></svg>
-        <p class="sub">Catat, selesaikan, dan rayakan setiap langkah kecil.</p>
-      </div>
-      <svg class="kilau k1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 5 3 7 8 8-5 1-7 3-8 8-1-5-3-7-8-8 5-1 7-3 8-8z" fill="#D2A67C"/></svg>
-      <svg class="kilau k2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 5 3 7 8 8-5 1-7 3-8 8-1-5-3-7-8-8 5-1 7-3 8-8z" fill="#B07A55"/></svg>
-    </header>
-
-    <form id="form-todo" novalidate>
-      <div class="kolom-input">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1-5L16 4l4 4L9 19zM14 6l4 4" fill="none" stroke="#A8693F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <input type="text" id="input-todo" placeholder="Tulis tugas baru..." maxlength="120" autocomplete="off" aria-label="Tugas baru">
-      </div>
-      <button type="submit" class="tambah">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
-        Tambah
-      </button>
-    </form>
-    <p id="error" role="alert"></p>
-
-    <div class="status">
-      <p id="stats" aria-live="polite">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#7A4A2B"/><path d="M7 12.5l3.5 3.5L17 9" stroke="#fff" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span id="teks-stats">0 tugas belum selesai</span>
-      </p>
-      <div class="track" aria-hidden="true">
-        <div id="bar"></div>
-        <svg id="heart" viewBox="0 0 24 24"><path d="M12 21s-8-5.5-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 5.500-8 11-8 11z" fill="#FFF6EC" stroke="#A8693F" stroke-width="2"/></svg>
-      </div>
-      <span id="persen">0%</span>
+      <section id="laporan" class="block">
+        <p class="eyebrow">Dokumen</p>
+        <h2>Assignment Reports</h2>
+        <div class="report">
+          <div class="pdf" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg><b>PDF</b></div>
+          <div class="report-text">
+            <h3>Laporan Tugas Praktikum</h3>
+            <p>Seluruh laporan tugas tersedia dalam format PDF dan tersimpan di folder Google Drive.</p>
+          </div>
+          <a class="btn" id="btnDrive" href="#" target="_blank" rel="noopener noreferrer">Buka Folder Google Drive</a>
+        </div>
+      </section>
     </div>
 
-    <ul id="list-todo"></ul>
-    <p id="selamat" hidden>🎉 Semua tugas selesai! Kerja bagus.</p>
+    <div id="viewDetail" hidden></div>
   </main>
-  <script src="app.js?v=3"></script>
+
+  <footer class="footer">
+    <div class="wrap foot">
+      <strong>PBP Assignment Collection</strong>
+      <span id="footName"></span>
+      <span id="footUniv"></span>
+      <span id="footYear"></span>
+    </div>
+  </footer>
+
+  <dialog id="dlgProfile">
+    <form id="formProfile" novalidate>
+      <h3>Edit Profil &amp; Pengaturan</h3>
+      <div class="grid2">
+        <label>Nama<input id="fNama" required></label>
+        <label>NIM<input id="fNim" required></label>
+        <label>Program Studi<input id="fProdi" required></label>
+        <label>Kelas<input id="fKelas" required></label>
+      </div>
+      <label>Universitas<input id="fUniv" required></label>
+      <label>Deskripsi<textarea id="fDesk" rows="3"></textarea></label>
+      <hr>
+      <label>Judul Website<input id="fSite" required></label>
+      <p class="err" id="errProfile" role="alert"></p>
+      <div class="actions">
+        <button type="button" class="btn ghost" data-close="dlgProfile">Batal</button>
+        <button type="submit" class="btn">Simpan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="dlgWork">
+    <form id="formWork" novalidate>
+      <h3 id="workDlgTitle">Tambah Praktikum</h3>
+      <div class="grid2">
+        <label>Nomor Pertemuan<input id="wNum" type="number" min="1" max="99" required></label>
+        <label>Status
+          <select id="wStatus"><option value="available">Tersedia</option><option value="soon">Belum tersedia</option></select>
+        </label>
+      </div>
+      <label>Judul Praktikum<input id="wTitle" required></label>
+      <label>Deskripsi<textarea id="wDesc" rows="3"></textarea></label>
+      <label>Lokasi File Hasil (mis. praktikum/pertemuan-4/index.html)<input id="wPath"></label>
+      <p class="err" id="errWork" role="alert"></p>
+      <div class="actions">
+        <button type="button" class="btn ghost" data-close="dlgWork">Batal</button>
+        <button type="submit" class="btn">Simpan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
 </body>
 </html>
