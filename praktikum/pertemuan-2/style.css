@@ -11,16 +11,10 @@
   --shadow: 0 6px 18px rgba(73, 54, 41, 0.10);
 }
 
-/* Reset Dasar */
-* { 
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box; 
-}
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { 
-  scroll-behavior: smooth; 
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -29,9 +23,7 @@ body {
   line-height: 1.7;
 }
 
-h1, h2, h3 { 
-  font-family: Georgia, 'Times New Roman', serif; 
-}
+h1, h2, h3 { font-family: Georgia, 'Times New Roman', serif; }
 
 /* Header */
 header {
@@ -52,23 +44,11 @@ header {
   background: var(--cream);
 }
 
-header h1 { 
-  font-size: 2rem; 
-  letter-spacing: 0.5px; 
-}
+header h1 { font-size: 2rem; letter-spacing: 0.5px; }
+.subtitle { color: var(--beige); font-weight: 500; }
+.meta { font-size: 0.9rem; color: var(--light-brown); margin-top: 4px; }
 
-.subtitle { 
-  color: var(--beige); 
-  font-weight: 500; 
-}
-
-.meta { 
-  font-size: 0.9rem; 
-  color: var(--light-brown); 
-  margin-top: 4px; 
-}
-
-/* Navigasi (Sticky & Flexbox) */
+/* Navigasi (Flexbox) */
 nav {
   position: sticky;
   top: 0;
@@ -92,27 +72,12 @@ nav a {
 }
 
 nav a:hover,
-nav a.active { 
-  background: var(--coffee); 
-  color: var(--white-warm); 
-}
+nav a:focus-visible { background: var(--coffee); color: var(--white-warm); }
 
-nav a:focus-visible { 
-  background: var(--coffee); 
-  color: var(--white-warm); 
-}
+a:focus-visible { outline: 3px solid var(--light-brown); outline-offset: 2px; }
 
-a:focus-visible { 
-  outline: 3px solid var(--light-brown); 
-  outline-offset: 2px; 
-}
-
-/* Konten Utama */
-main { 
-  max-width: 960px; 
-  margin: 28px auto; 
-  padding: 0 20px; 
-}
+/* Konten utama */
+main { max-width: 960px; margin: 28px auto; padding: 0 20px; }
 
 section {
   background: var(--white-warm);
@@ -132,19 +97,7 @@ h2 {
   display: inline-block;
 }
 
-/* Tentang - Paragraf Rata Kiri Kanan */
-#tentang p {
-  text-align: justify;
-  line-height: 1.8;
-  margin-bottom: 14px;
-  color: var(--dark);
-}
-
-#tentang p:last-child {
-  margin-bottom: 0;
-}
-
-/* Kartu Keahlian (CSS Grid Responsif Otomatis) */
+/* Kartu keahlian (CSS Grid) */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -180,15 +133,8 @@ h2 {
   font-size: 0.95rem;
 }
 
-.card h3 { 
-  font-size: 1.1rem; 
-  color: var(--dark); 
-}
-
-.card p { 
-  font-size: 0.9rem; 
-  color: var(--coffee); 
-}
+.card h3 { font-size: 1.1rem; color: var(--dark); }
+.card p { font-size: 0.9rem; color: var(--coffee); }
 
 /* Kontak (Flexbox) */
 .contact {
@@ -205,14 +151,8 @@ h2 {
   padding: 8px 20px;
 }
 
-.contact a { 
-  color: var(--coffee); 
-  font-weight: 600; 
-}
-
-.contact a:hover { 
-  color: var(--dark); 
-}
+.contact a { color: var(--coffee); font-weight: 600; }
+.contact a:hover { color: var(--dark); }
 
 /* Footer */
 footer {
@@ -223,8 +163,10 @@ footer {
   margin-top: 40px;
 }
 
-/* Aksesibilitas: Kurangi Animasi */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* Kontak: teks panjang tidak keluar layar */
+.contact li { overflow-wrap: anywhere; }
