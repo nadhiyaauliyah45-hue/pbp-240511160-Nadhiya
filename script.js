@@ -23,7 +23,7 @@ const DESCS = {
   4: "Aplikasi To-Do List dengan JavaScript murni: manipulasi DOM, event handling, dan penyimpanan data di localStorage.",
   5: "Konversi To-Do List ke React: komponen, props, state (useState), dan useEffect dengan localStorage."
 };
-const PATHS = { 1: "praktikum/pertemuan-1/hello.html", 2: "praktikum/pertemuan-2/index.html", 3: "praktikum/pertemuan-3/index.html", 4: "praktikum/pertemuan-4/index.html", 5: "praktikum/pertemuan-5/dist/index.html" };
+const PATHS = { 1: "praktikum/pertemuan-1/hello.html", 2: "praktikum/lpk-2a/index.html", 3: "praktikum/lpk-2b/index.html", 4: "praktikum/lpk-3a/index.html", 5: "praktikum/lpk-3b/dist/index.html" };
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
