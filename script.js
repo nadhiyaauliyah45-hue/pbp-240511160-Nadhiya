@@ -1,13 +1,10 @@
-/* ====== KONFIGURASI ======
-   Tempel link folder Google Drive Anda di driveUrl (di antara tanda kutip).
-   Folder harus dibagikan: Anyone with the link -> Viewer. */
 const CONFIG = Object.freeze({
   driveUrl: "https://drive.google.com/drive/folders/14ZEuOfxmCde2Ig2tZ46CC3XpA6bx93Oj?usp=drive_link",
   siteTitle: "PBP Assignment Collection",
   tagline: "My Practice, My Progress, My Portfolio.",
   photo: "assets/images/profile.jpg" // foto profil tetap: letakkan file di folder ini
 });
-const KEY = { profile: "pbp_profile_v1", works: "pbp_works_v3", settings: "pbp_settings_v1" };
+const KEY = { profile: "pbp_profile_v1", works: "pbp_works_v4", settings: "pbp_settings_v1" };
 
 const DEFAULT_PROFILE = {
   nama: "Nadhiya Auliyah Ramadhani", nim: "240511160", prodi: "S1 Teknik Informatika",
@@ -21,9 +18,10 @@ const DESCS = {
   2: "Halaman profil pribadi menggunakan HTML5 semantik, CSS, Flexbox, dan CSS Grid.",
   3: "Pengembangan halaman profil agar responsif menggunakan media queries untuk mobile, tablet, dan desktop.",
   4: "Aplikasi To-Do List dengan JavaScript murni: manipulasi DOM, event handling, dan penyimpanan data di localStorage.",
-  5: "Konversi To-Do List ke React: komponen, props, state (useState), dan useEffect dengan localStorage."
+  5: "Konversi To-Do List ke React: komponen, props, state (useState), dan useEffect dengan localStorage.",
+  6: "REST API sederhana dengan Express.js: endpoint CRUD, validasi, dan status code. Server dijalankan lokal; halaman ini berisi dokumentasi API."
 };
-const PATHS = { 1: "praktikum/pertemuan-1/hello.html", 2: "praktikum/lkp-2a/index.html", 3: "praktikum/lkp-2b/index.html", 4: "praktikum/lkp-3a/index.html", 5: "praktikum/lkp-3b/dist/index.html" };
+const PATHS = { 1: "praktikum/pertemuan-1/hello.html", 2: "praktikum/pertemuan-2/index.html", 3: "praktikum/pertemuan-3/index.html", 4: "praktikum/pertemuan-4/index.html", 5: "praktikum/lpk-3b/dist/index.html", 6: "praktikum/lpk-4a/docs/index.html" };
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -31,7 +29,7 @@ const load = (k, fb) => { try { const v = JSON.parse(localStorage.getItem(k)); r
 const save = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch { toast("Penyimpanan penuh, coba foto yang lebih kecil."); return false; } };
 
 const defaultWorks = () => TITLES.map((t, i) => {
-  const n = i + 1, ok = n <= 5;
+  const n = i + 1, ok = n <= 6;
   return { num: n, title: t, desc: ok ? DESCS[n] : "Belum dikerjakan.", path: ok ? PATHS[n] : "", status: ok ? "available" : "soon" };
 });
 
