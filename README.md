@@ -70,9 +70,11 @@ pbp-assignment/
 │       └── profile.jpg
 └── praktikum/
     ├── pertemuan-1/   # Hello World 3 platform + analisis platform
-    ├── pertemuan-2/   # Halaman profil HTML5 & CSS
-    ├── pertemuan-3/   # Halaman profil responsif (media queries)
-    └── pertemuan-4/   # To-Do List (JavaScript, DOM, localStorage)
+    ├── lkp-2a/   # Halaman profil HTML5 & CSS
+    ├── lkp-2b/   # Halaman profil responsif (media queries)
+    ├── lkp-3a/   # To-Do List (JavaScript, DOM, localStorage)
+    ├── lkp-3b/        # To-Do List React (kode sumber + dist/ hasil build)
+    └── lkp-4a/        # REST API Express (server.js + docs/)
 ```
 
 ## 🚀 Cara Menjalankan
@@ -112,7 +114,9 @@ pbp-assignment/
 | 2 | HTML5 & CSS Dasar: Halaman Profil | ✅ Tersedia |
 | 3 | Responsive Design: Halaman Profil Responsif | ✅ Tersedia |
 | 4 | JavaScript Fundamentals & DOM: To-Do List | ✅ Tersedia |
-| 5–16 | Menyusul | ⏳ Belum tersedia |
+| 5 | React Fundamentals: To-Do List React | ✅ Tersedia |
+| 6 | Back-End dengan Express.js: REST API (LKP 4A) | ✅ Tersedia |
+| 7–16 | Menyusul | ⏳ Belum tersedia |
 
 ## 📝 Catatan
 
