@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dokumentasi REST API - LKP 4A</title>
+  <style>
+    :root { --bg:#FBF3EA; --beige:#EBD2B6; --soft:#D2A67C; --coffee:#A8693F; --dark:#7A4A2B; --darker:#5E3620; --text:#4A2C1A; --white:#FFFCF8; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', 'Lucida Sans Unicode', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 28px 18px 60px; }
+    main { max-width: 860px; margin: 0 auto; }
+    h1 { font-family: Georgia, serif; color: var(--darker); font-size: clamp(1.6rem, 5vw, 2.2rem); }
+    .sub { color: var(--coffee); font-weight: 600; margin-bottom: 18px; }
+    .info { background: var(--white); border: 1px solid var(--beige); border-radius: 18px; padding: 16px 20px; margin-bottom: 22px; box-shadow: 0 6px 18px rgba(122,74,43,.08); }
+    .info code { background: var(--beige); padding: 2px 8px; border-radius: 8px; }
+    h2 { font-family: Georgia, serif; color: var(--dark); margin: 26px 0 12px; }
+    .ep { background: var(--white); border: 1px solid var(--beige); border-radius: 18px; padding: 16px 20px; margin-bottom: 14px; box-shadow: 0 6px 18px rgba(122,74,43,.08); transition: transform .2s; }
+    .ep:hover { transform: translateY(-3px); }
+    .baris { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 6px; }
+    .m { font-weight: 800; font-size: .8rem; color: #fff; padding: 3px 12px; border-radius: 999px; letter-spacing: .5px; }
+    .GET { background: #8C8B5C; } .POST { background: var(--dark); } .PUT { background: var(--coffee); } .DELETE { background: #8A3B2E; }
+    .path { font-family: Consolas, monospace; font-weight: 700; }
+    .st { margin-left: auto; font-size: .85rem; color: var(--coffee); font-weight: 700; }
+    pre { background: #3F2A1E; color: #F8E7D3; padding: 12px 14px; border-radius: 12px; overflow-x: auto; font-size: .85rem; margin-top: 8px; }
+    table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 14px; overflow: hidden; }
+    th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--beige); font-size: .92rem; }
+    th { background: var(--beige); }
+    .cat { margin-top: 24px; font-size: .88rem; color: var(--coffee); }
+  </style>
+</head>
+<body>
+<main>
+  <h1>REST API Sederhana dengan Express</h1>
+  <p class="sub">LKP 4A &middot; Pertemuan 6 &middot; Nadhiya Auliyah Ramadhani (240511160)</p>
+
+  <div class="info">
+    API ini berjalan di komputer lokal pada <code>http://localhost:3000</code> (jalankan <code>npm run dev</code> di folder <code>lpk-4a</code>).
+    Data disimpan di array in-memory sehingga kembali ke data awal setiap server dimulai ulang.
+    GitHub Pages hanya menampilkan halaman statis, sehingga halaman ini berisi dokumentasi.
+  </div>
+
+  <h2>Endpoint</h2>
+
+  <div class="ep"><div class="baris"><span class="m GET">GET</span><span class="path">/api/items</span><span class="st">200 OK</span></div>
+    Mengambil semua item.
+    <pre>{ "sukses": true, "data": [
+  { "id": 1, "nama": "Laptop", "harga": 8000000 },
+  { "id": 2, "nama": "Mouse",  "harga": 150000 } ] }</pre></div>
+
+  <div class="ep"><div class="baris"><span class="m GET">GET</span><span class="path">/api/items/:id</span><span class="st">200 / 404</span></div>
+    Mengambil satu item berdasarkan id.
+    <pre>GET /api/items/1
+{ "sukses": true, "data": { "id": 1, "nama": "Laptop", "harga": 8000000 } }
+
+GET /api/items/99   (404)
+{ "sukses": false, "pesan": "Item tidak ditemukan" }</pre></div>
+
+  <div class="ep"><div class="baris"><span class="m POST">POST</span><span class="path">/api/items</span><span class="st">201 / 400</span></div>
+    Menambah item baru. Body JSON wajib berisi <code>nama</code> dan <code>harga</code>.
+    <pre>POST /api/items
+{ "nama": "Keyboard", "harga": 300000 }
+
+201 Created
+{ "sukses": true, "data": { "id": 3, "nama": "Keyboard", "harga": 300000 } }
+
+400 Bad Request (harga tidak dikirim)
+{ "sukses": false, "pesan": "nama dan harga wajib diisi" }</pre></div>
+
+  <div class="ep"><div class="baris"><span class="m PUT">PUT</span><span class="path">/api/items/:id</span><span class="st">200 / 400 / 404</span></div>
+    Mengubah sebagian atau seluruh field item.
+    <pre>PUT /api/items/1
+{ "harga": 7500000 }
+
+200 OK
+{ "sukses": true, "data": { "id": 1, "nama": "Laptop", "harga": 7500000 } }</pre></div>
+
+  <div class="ep"><div class="baris"><span class="m DELETE">DELETE</span><span class="path">/api/items/:id</span><span class="st">200 / 404</span></div>
+    Menghapus item berdasarkan id.
+    <pre>DELETE /api/items/2
+
+200 OK
+{ "sukses": true, "pesan": "Item berhasil dihapus" }</pre></div>
+
+  <h2>Status code</h2>
+  <table>
+    <tr><th>Code</th><th>Makna</th><th>Dipakai saat</th></tr>
+    <tr><td>200</td><td>OK</td><td>GET, PUT, DELETE berhasil</td></tr>
+    <tr><td>201</td><td>Created</td><td>POST berhasil</td></tr>
+    <tr><td>400</td><td>Bad Request</td><td>Input tidak lengkap atau tidak valid, JSON rusak</td></tr>
+    <tr><td>404</td><td>Not Found</td><td>Id atau alamat tidak ditemukan</td></tr>
+    <tr><td>500</td><td>Internal Server Error</td><td>Galat tak terduga pada server</td></tr>
+  </table>
+  <p class="cat">Contoh respons di halaman ini disusun dari logika kode pada <code>server.js</code>. Hasil pengujian yang sebenarnya didokumentasikan pada laporan praktikum.</p>
+</main>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "lpk-4a",
+  "version": "1.0.0",
+  "description": "REST API dengan endpoint CRUD untuk data `items` yang disimpan dalam **array in-memory** (data kembali ke awal setiap server dimulai ulang).",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
