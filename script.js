@@ -21,7 +21,7 @@ const DESCS = {
   5: "Konversi To-Do List ke React: komponen, props, state (useState), dan useEffect dengan localStorage.",
   6: "REST API sederhana dengan Express.js: endpoint CRUD, validasi, dan status code. Server dijalankan lokal; halaman ini berisi dokumentasi API."
 };
-const PATHS = { 1: "praktikum/pertemuan-1/hello.html", 2: "praktikum/pertemuan-2/index.html", 3: "praktikum/pertemuan-3/index.html", 4: "praktikum/pertemuan-4/index.html", 5: "praktikum/lpk-3b/dist/index.html", 6: "praktikum/lpk-4a/docs/index.html" };
+const PATHS = { 1: "praktikum/pertemuan-1/hello.html", 2: "praktikum/lkp-2a/index.html", 3: "praktikum/lkp-2a/index.html", 4: "praktikum/lkp-3a/index.html", 5: "praktikum/lkp-3b/dist/index.html", 6: "praktikum/lkp-4a/docs/index.html" };
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
